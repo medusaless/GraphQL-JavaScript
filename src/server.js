@@ -1,7 +1,7 @@
 
 var express = require('express');
 var graphqlHTTP = require('express-graphql');
-
+const { host, port } = require('./config.json');
 var schema = require('./schema')
 
 var app = express();
@@ -10,4 +10,4 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true, //启用GraphiQL
 }));
 
-app.listen(4000, () => console.log('请在浏览器中打开地址：localhost:4000/graphql'));
+app.listen(port, host, () => console.log(`this address is：http://${host}:${port}/graphql`));
