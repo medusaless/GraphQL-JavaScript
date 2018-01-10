@@ -2,6 +2,7 @@ var {
     GraphQLString,
     GraphQLInt,
     GraphQLNonNull,
+    GraphQLInputObjectType,
     GraphQLObjectType
 } = require('graphql');
 
@@ -38,4 +39,22 @@ const BookType = new GraphQLObjectType({
     },
 });
 
+const BookInputType = new GraphQLInputObjectType({
+    name:'BookInputType',
+    fields:() => {
+        return ({
+            name: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            price: {
+                type: new GraphQLNonNull(GraphQLInt)
+            },
+            info:{
+                type: new GraphQLNonNull(GraphQLString)
+            }
+        });
+    }
+});
+
 exports.BookType = BookType;
+exports.BookInputType = BookInputType;
